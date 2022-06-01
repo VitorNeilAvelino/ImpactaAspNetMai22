@@ -3,17 +3,20 @@ using Marketplace.Repositorios.SqlServer.DbFirst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Marketplace.Mvc.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         ClienteRepositorio repositorio = new ClienteRepositorio();
 
-        // GET: Clientes
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(Mapear(repositorio.Selecionar()));
@@ -91,15 +94,16 @@ namespace Marketplace.Mvc.Controllers
             return cliente;
         }
 
-        // GET: Clientes/Edit/5
+        [Authorize(Roles = "Gerente, Administrador")]
+        //[Authorize(Roles = "Master")]
         public ActionResult Edit(int id)
         {
             return View(Mapear(repositorio.Selecionar(id)));
         }
 
-        // POST: Clientes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Gerente, Administrador")]
         public ActionResult Edit(int id, ClienteViewModel viewModel)
         {
             try
@@ -130,6 +134,15 @@ namespace Marketplace.Mvc.Controllers
         // GET: Clientes/Delete/5
         public ActionResult Delete(int id)
         {
+            var usuarioLogado = (ClaimsPrincipal)Thread.CurrentPrincipal;
+
+            if (!usuarioLogado.HasClaim("Clientes", "Excluir"))
+            {
+                //return RedirectToAction("Login", "Account");
+                //return RedirectToAction("Claim", "Error");
+                return View("ClaimError");
+            }
+
             return View(Mapear(repositorio.Selecionar(id)));
         }
 
