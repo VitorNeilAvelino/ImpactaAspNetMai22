@@ -3,6 +3,7 @@ using GatewayPagamento.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,13 @@ namespace GatewayPagamento.Repositorios.SqlServer.CodeFirst
     {
         public void Inserir(Pagamento pagamento)
         {
-            throw new NotImplementedException();
+            using (var contexto = new GatewayPagamentoDbContext())
+            {
+                pagamento.Cartao = contexto.Cartoes.SingleOrDefault(c => c.Numero == pagamento.Cartao.Numero);
+
+                contexto.Pagamentos.Add(pagamento);
+                contexto.SaveChanges();
+            }
         }
 
         public List<Pagamento> Selecionar(string numeroCartao)
@@ -21,6 +28,16 @@ namespace GatewayPagamento.Repositorios.SqlServer.CodeFirst
             {
                 return contexto.Pagamentos
                     .Where(p => p.Cartao.Numero == numeroCartao)
+                    .ToList();
+            }
+        }
+
+        public List<Pagamento> Selecionar(Expression<Func<Pagamento, bool>> condicao)
+        {
+            using (var contexto = new GatewayPagamentoDbContext())
+            {
+                return contexto.Pagamentos
+                    .Where(condicao)
                     .ToList();
             }
         }
