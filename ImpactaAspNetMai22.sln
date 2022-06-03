@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayPagamento.Repositori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayPagamento.Repositorios.SqlServer.CodeFirstTests", "GatewayPagamento.Repositorios.SqlServer.CodeFirstTests\GatewayPagamento.Repositorios.SqlServer.CodeFirstTests.csproj", "{A0306CDC-2434-465F-AA71-E442C3703FC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayPagamento.WebApi", "GatewayPagamento.WebApi\GatewayPagamento.WebApi.csproj", "{A3397E92-35DB-4508-BAFF-D59F49BB03ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{A0306CDC-2434-465F-AA71-E442C3703FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0306CDC-2434-465F-AA71-E442C3703FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0306CDC-2434-465F-AA71-E442C3703FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{48F49027-A499-4D4D-92C7-48D1349D2923} = {31201C39-478E-475C-AE58-CBC0B65151FA}
 		{F9A43141-4D47-4FA8-B4F6-16C152A55E99} = {31201C39-478E-475C-AE58-CBC0B65151FA}
 		{A0306CDC-2434-465F-AA71-E442C3703FC5} = {31201C39-478E-475C-AE58-CBC0B65151FA}
+		{A3397E92-35DB-4508-BAFF-D59F49BB03ED} = {31201C39-478E-475C-AE58-CBC0B65151FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {010584EB-4817-4A09-8B68-C4C5496D757C}
