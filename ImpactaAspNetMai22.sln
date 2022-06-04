@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayPagamento.Repositori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayPagamento.WebApi", "GatewayPagamento.WebApi\GatewayPagamento.WebApi.csproj", "{A3397E92-35DB-4508-BAFF-D59F49BB03ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Repositorios.Http", "Marketplace.Repositorios.Http\Marketplace.Repositorios.Http.csproj", "{DAB8C51D-55D6-416B-A76D-360490EBB690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3397E92-35DB-4508-BAFF-D59F49BB03ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB8C51D-55D6-416B-A76D-360490EBB690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB8C51D-55D6-416B-A76D-360490EBB690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB8C51D-55D6-416B-A76D-360490EBB690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB8C51D-55D6-416B-A76D-360490EBB690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{F9A43141-4D47-4FA8-B4F6-16C152A55E99} = {31201C39-478E-475C-AE58-CBC0B65151FA}
 		{A0306CDC-2434-465F-AA71-E442C3703FC5} = {31201C39-478E-475C-AE58-CBC0B65151FA}
 		{A3397E92-35DB-4508-BAFF-D59F49BB03ED} = {31201C39-478E-475C-AE58-CBC0B65151FA}
+		{DAB8C51D-55D6-416B-A76D-360490EBB690} = {2B6B305E-E21C-4F17-ABB5-379CD35B9A1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {010584EB-4817-4A09-8B68-C4C5496D757C}

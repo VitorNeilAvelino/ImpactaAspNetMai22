@@ -1,4 +1,7 @@
-﻿using GatewayPagamento.Repositorios.SqlServer.CodeFirst;
+﻿using GatewayPagamento.Dominio.Entidades;
+using GatewayPagamento.Dominio.Servicos;
+using GatewayPagamento.Repositorios.SqlServer.CodeFirst;
+using GatewayPagamento.WebApi.Helpers;
 using GatewayPagamento.WebApi.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +14,14 @@ namespace GatewayPagamento.WebApi.Controllers
 {
     public class PagamentosController : ApiController
     {
-        PagamentoRepositorio pagamentoRepositorio = new PagamentoRepositorio();
+        private readonly PagamentoRepositorio pagamentoRepositorio = new PagamentoRepositorio();
+        private readonly CartaoRepositorio cartaoRepositorio = new CartaoRepositorio();
+        private readonly PagamentoServico pagamentoServico;// = new PagamentoServico(pagamentoRepositorio, cartaoRepositorio);
+
+        public PagamentosController()
+        {
+            pagamentoServico = new PagamentoServico(pagamentoRepositorio, cartaoRepositorio);
+        }
 
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -19,15 +29,33 @@ namespace GatewayPagamento.WebApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<controller>/5
-        public List<PagamentoGetViewModel> Get(string numeroCartao)
+        [Route("api/pagamentos/cartao/{guidCartao}")]
+        public List<PagamentoGetViewModel> Get(Guid guidCartao)
         {
-            return PagamentoGetViewModel.Mapear(pagamentoRepositorio.Selecionar(numeroCartao));
+            return PagamentoGetViewModel.Mapear(pagamentoRepositorio.Selecionar(p => p.Cartao.Guid == guidCartao));
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public IHttpActionResult Post(PagamentoPostViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var statusPagamento = pagamentoServico.Inserir(PagamentoPostViewModel.Mapear(viewModel));
+
+            switch (statusPagamento)
+            {
+                case StatusPagamento.SaldoIndisponivel:
+                case StatusPagamento.PedidoJaPago:
+                case StatusPagamento.CartaoInexistente:
+                    return BadRequest(statusPagamento.ObterDescricao());
+                case StatusPagamento.PagamentoOK:
+                    return Ok(new { Status = statusPagamento, MensagemStatus = statusPagamento.ObterDescricao() });
+            }
+
+            return InternalServerError(new ArgumentOutOfRangeException(nameof(statusPagamento)));
         }
 
         // PUT api/<controller>/5

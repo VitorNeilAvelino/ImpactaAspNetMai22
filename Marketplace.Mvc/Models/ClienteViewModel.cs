@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Marketplace.Mvc.Models
 {
@@ -20,5 +21,7 @@ namespace Marketplace.Mvc.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        public Guid? GuidCartao { get; set; }
     }
 }
