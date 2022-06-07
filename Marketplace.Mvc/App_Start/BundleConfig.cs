@@ -13,7 +13,8 @@ namespace Marketplace.Mvc
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*",
-                        "~/Scripts/inputmask/jquery.inputmask.js"));
+                        "~/Scripts/inputmask/jquery.inputmask.js",
+                        "~/Scripts/methods_pt.js"));
 
             // Use a versão em desenvolvimento do Modernizr para desenvolver e aprender com ela. Após isso, quando você estiver
             // pronto para a produção, utilize a ferramenta de build em https://modernizr.com para escolher somente os testes que precisa.
