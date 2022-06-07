@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace GatewayPagamento.Dominio.Entidades
+namespace Marketplace.Mvc.Models
 {
     public enum StatusPagamento// : int
     {

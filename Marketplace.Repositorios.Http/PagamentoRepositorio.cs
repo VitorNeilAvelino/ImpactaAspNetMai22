@@ -27,11 +27,12 @@ namespace Marketplace.Repositorios.Http
             }
         }
 
-        public async Task Post(PagamentoRequest pagamento)
+        public async Task<PagamentoResponse> Post(PagamentoRequest pagamento)
         {
             using (var resposta = await httpClient.PostAsJsonAsync(caminho, pagamento))
             {
-                resposta.EnsureSuccessStatusCode();
+                //resposta.EnsureSuccessStatusCode();
+                return await resposta.Content.ReadAsAsync<PagamentoResponse>();
             }
         }
     }
