@@ -2,7 +2,7 @@
 
 namespace Marketplace.Mvc.Models
 {
-    public enum StatusPagamento// : int
+    public enum StatusPagamento
     {
         [Description("Não definido")]
         NaoDefinido = 0,
