@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ExpoCenter.Repositorios.SqlServer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
@@ -44,6 +38,39 @@ namespace ExpoCenter.Repositorios.SqlServer.Tests
                         
             dbContext.Eventos.Add(evento);
             dbContext.SaveChanges();
+        }
+
+        [TestMethod]
+        public void InserirParticipanteTeste()
+        {
+            Participante participante = new ();
+            participante.Cpf = "12345678910";
+            participante.Email = "avelino.vitor@gmail.com";
+            participante.DataNascimento = Convert.ToDateTime("25/12/1970");
+            participante.Nome = "Vítor";
+
+            participante.Eventos = new List<Evento>()
+            {
+                //dbContext.Eventos.First()
+                dbContext.Eventos.Single(e => e.Descricao == "Copa do Mundo Fifa")
+            };
+
+            dbContext.Participantes.Add(participante);
+            dbContext.SaveChanges();
+
+            foreach (var evento in participante.Eventos)
+            {
+                Console.WriteLine(evento.Descricao);
+            }
+        }
+
+        [TestMethod]
+        public void SelecionarParticipantesTeste()
+        {
+            foreach (var participante in dbContext.Participantes)
+            {
+                Console.WriteLine(participante.Nome);
+            }
         }
     }
 }
