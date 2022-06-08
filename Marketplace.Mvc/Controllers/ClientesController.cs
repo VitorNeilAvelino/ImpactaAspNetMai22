@@ -43,7 +43,7 @@ namespace Marketplace.Mvc.Controllers
             viewModel.Documento = Convert.ToUInt64(new Regex(@"[^\d]").Replace(cliente.Documento, "")).ToString(@"000\.000\.000-00");
             viewModel.Id = cliente.Id;
             viewModel.Email = cliente.Email;
-            viewModel.GuidCartao = cliente.Cartoes.FirstOrDefault()?.Guid;
+            viewModel.GuidCartao = cliente.Cartoes.FirstOrDefault()?.Guid; // vai dar erro pela ausência do .Include(c => c.Cartoes) em ClienteRepositorio.
 
             return viewModel;
         }

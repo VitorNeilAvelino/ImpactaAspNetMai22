@@ -2,9 +2,7 @@
 using Marketplace.Repositorios.Http.Responses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Marketplace.Repositorios.Http
@@ -31,7 +29,7 @@ namespace Marketplace.Repositorios.Http
         {
             using (var resposta = await httpClient.PostAsJsonAsync(caminho, pagamento))
             {
-                //resposta.EnsureSuccessStatusCode();
+                //resposta.EnsureSuccessStatusCode(); // comentar que essa pode ser uma opção para o Delete, por exemplo
                 return await resposta.Content.ReadAsAsync<PagamentoResponse>();
             }
         }

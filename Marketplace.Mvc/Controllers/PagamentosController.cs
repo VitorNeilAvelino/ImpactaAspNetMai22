@@ -2,9 +2,7 @@
 using Marketplace.Repositorios.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Marketplace.Mvc.Controllers
@@ -14,7 +12,6 @@ namespace Marketplace.Mvc.Controllers
         //ToDo: parametrizar o baseAddress.
         private readonly PagamentoRepositorio pagamentoRepositorio = new PagamentoRepositorio("http://localhost:22012/api");
 
-        // GET: Pagamentos
         public async Task<ActionResult> Index(Guid? guidCartao)
         {
             if (!guidCartao.HasValue)
@@ -27,19 +24,11 @@ namespace Marketplace.Mvc.Controllers
             return View(PagamentoIndexViewModel.Mapear(await pagamentoRepositorio.ObterPorCartao(guidCartao.Value)));
         }
 
-        // GET: Pagamentos/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Pagamentos/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Pagamentos/Create
         [HttpPost]
         public async Task<ActionResult> Create(PagamentoCreateViewModel viewModel)
         {
@@ -67,13 +56,16 @@ namespace Marketplace.Mvc.Controllers
             }
         }
 
-        // GET: Pagamentos/Edit/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Pagamentos/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -89,13 +81,11 @@ namespace Marketplace.Mvc.Controllers
             }
         }
 
-        // GET: Pagamentos/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Pagamentos/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
