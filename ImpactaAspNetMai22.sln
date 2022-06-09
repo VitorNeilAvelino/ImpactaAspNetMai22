@@ -25,11 +25,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Repositorios.Ht
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExpoCenter", "ExpoCenter", "{D665925F-A2DA-41B1-B2D4-91151BA60D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Dominio", "ExpoCenter.Dominio\ExpoCenter.Dominio.csproj", "{07F15652-628C-4D57-BC57-E86D9F0DAA06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Dominio", "ExpoCenter.Dominio\ExpoCenter.Dominio.csproj", "{07F15652-628C-4D57-BC57-E86D9F0DAA06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Repositorios.SqlServer", "ExpoCenter.Repositorios.SqlServer\ExpoCenter.Repositorios.SqlServer.csproj", "{F81EA28D-DF60-4979-B536-08C2050120B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Repositorios.SqlServer", "ExpoCenter.Repositorios.SqlServer\ExpoCenter.Repositorios.SqlServer.csproj", "{F81EA28D-DF60-4979-B536-08C2050120B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Repositorios.SqlServerTests", "ExpoCenter.Repositorios.SqlServerTests\ExpoCenter.Repositorios.SqlServerTests.csproj", "{53D48529-6E59-4930-B8FF-71CD85235300}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Repositorios.SqlServerTests", "ExpoCenter.Repositorios.SqlServerTests\ExpoCenter.Repositorios.SqlServerTests.csproj", "{53D48529-6E59-4930-B8FF-71CD85235300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Mvc", "ExpoCenter.Mvc\ExpoCenter.Mvc.csproj", "{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{53D48529-6E59-4930-B8FF-71CD85235300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53D48529-6E59-4930-B8FF-71CD85235300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53D48529-6E59-4930-B8FF-71CD85235300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{07F15652-628C-4D57-BC57-E86D9F0DAA06} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 		{F81EA28D-DF60-4979-B536-08C2050120B5} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 		{53D48529-6E59-4930-B8FF-71CD85235300} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
+		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {010584EB-4817-4A09-8B68-C4C5496D757C}
