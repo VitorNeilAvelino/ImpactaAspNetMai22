@@ -32,7 +32,11 @@ namespace ExpoCenter.Mvc.Controllers
         // GET: ParticipantesController/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ParticipanteCreateViewModel();
+
+            viewModel.Eventos = mapper.Map<List<EventoGridViewModel>>(dbContext.Eventos);
+
+            return View(viewModel);
         }
 
         // POST: ParticipantesController/Create
