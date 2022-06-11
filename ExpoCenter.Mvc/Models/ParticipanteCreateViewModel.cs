@@ -4,6 +4,8 @@ namespace ExpoCenter.Mvc.Models
 {
     public class ParticipanteCreateViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Nome { get; set; }
         
@@ -17,7 +19,7 @@ namespace ExpoCenter.Mvc.Models
         public string Cpf { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "Nascimento")]
         public DateTime DataNascimento { get; set; }
 

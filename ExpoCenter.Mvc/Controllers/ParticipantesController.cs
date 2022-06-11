@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ExpoCenter.Dominio.Entidades;
 using ExpoCenter.Mvc.Models;
 using ExpoCenter.Repositorios.SqlServer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpoCenter.Mvc.Controllers
 {
@@ -42,10 +44,27 @@ namespace ExpoCenter.Mvc.Controllers
         // POST: ParticipantesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ParticipanteCreateViewModel viewModel)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(ModelState);
+                }
+
+                var participante = mapper.Map<Participante>(viewModel);
+
+                participante.Eventos = new List<Evento>();
+
+                foreach (var evento in viewModel.Eventos.Where(e => e.Selecionado))
+                {
+                    participante.Eventos.Add(dbContext.Eventos.Find(evento.Id));
+                }
+
+                dbContext.Participantes.Add(participante);
+                dbContext.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -57,16 +76,70 @@ namespace ExpoCenter.Mvc.Controllers
         // GET: ParticipantesController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            //var participante = dbContext.Participantes.Include(p => p.Eventos).SingleOrDefault(p => p.Id == id);
+            var participante = dbContext.Participantes.SingleOrDefault(p => p.Id == id);
+
+            if (participante == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = mapper.Map<ParticipanteCreateViewModel>(participante);
+
+            viewModel.Eventos = mapper.Map<List<EventoGridViewModel>>(dbContext.Eventos);
+
+            if (participante.Eventos != null)
+            {
+                foreach (var evento in participante.Eventos)
+                {
+                    viewModel.Eventos.Single(e => e.Id == evento.Id).Selecionado = true;
+                } 
+            }
+
+            return View(viewModel);
         }
 
         // POST: ParticipantesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ParticipanteCreateViewModel viewModel)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+
+                var participante = dbContext.Participantes.Find(viewModel.Id);
+
+                if (participante == null)
+                {
+                    return NotFound();
+                }
+
+                dbContext.Entry(participante).CurrentValues.SetValues(viewModel);
+
+                foreach (var evento in viewModel.Eventos)
+                {
+                    if (evento.Selecionado)
+                    {
+                        if (participante.Eventos.Any(e => e.Id == evento.Id))
+                        {
+                            continue;
+                        }
+
+                        participante.Eventos.Add(dbContext.Eventos.Find(evento.Id));
+                    }
+                    else
+                    {
+                        participante.Eventos.Remove(dbContext.Eventos.Find(evento.Id));
+                    }
+                }
+
+                dbContext.Update(participante);
+                dbContext.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

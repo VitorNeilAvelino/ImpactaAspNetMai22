@@ -12,7 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 var expoCenterConnectionString = builder.Configuration.GetConnectionString("ExpoCenterConnection");
 builder.Services.AddDbContext<ExpoCenterDbContext>(options =>
-    options.UseSqlServer(expoCenterConnectionString));
+    options
+    .UseLazyLoadingProxies()
+    .UseSqlServer(expoCenterConnectionString));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
