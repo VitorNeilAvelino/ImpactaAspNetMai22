@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GatewayPagamento.Repositorios.SqlServer.CodeFirst;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GatewayPagamento.Dominio.Entidades;
 
 namespace GatewayPagamento.Repositorios.SqlServer.CodeFirst.Tests

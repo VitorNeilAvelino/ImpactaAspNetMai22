@@ -2,7 +2,7 @@
 
 namespace GatewayPagamento.Dominio.Entidades
 {
-    public enum StatusPagamento// : int
+    public enum StatusPagamento
     {
         [Description("Não definido")]
         NaoDefinido = 0,

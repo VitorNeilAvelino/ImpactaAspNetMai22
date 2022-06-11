@@ -1,9 +1,6 @@
 ﻿using GatewayPagamento.Dominio.Entidades;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace GatewayPagamento.WebApi.Models
 {
@@ -21,7 +18,6 @@ namespace GatewayPagamento.WebApi.Models
         [Required]
         public decimal Valor { get; set; }
 
-
         internal static Pagamento Mapear(PagamentoPostViewModel viewModel)
         {
             var pagamento = new Pagamento();
@@ -29,7 +25,7 @@ namespace GatewayPagamento.WebApi.Models
             pagamento.Data = viewModel.Data;
             pagamento.Valor = viewModel.Valor;
             pagamento.NumeroPedido = viewModel.NumeroPedido;
-            pagamento.Cartao = new Cartao { Numero = viewModel.NumeroCartao };
+            pagamento.Cartao = new Cartao { Numero = viewModel.NumeroCartao }; // O método Inserir do serviço sobrescreve o cartão.
 
             return pagamento;
         }

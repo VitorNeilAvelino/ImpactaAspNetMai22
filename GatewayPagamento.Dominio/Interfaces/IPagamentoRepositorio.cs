@@ -8,7 +8,7 @@ namespace GatewayPagamento.Dominio.Interfaces
     public interface IPagamentoRepositorio
     {
         void Inserir(Pagamento pagamento);
-        List<Pagamento> Selecionar(string numeroCartao);
+        List<Pagamento> Selecionar(Guid guidCartao);
         List<Pagamento> Selecionar(Expression<Func<Pagamento, bool>> condicao);
     }
 }

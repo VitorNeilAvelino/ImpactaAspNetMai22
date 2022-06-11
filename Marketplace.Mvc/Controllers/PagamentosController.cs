@@ -12,7 +12,7 @@ namespace Marketplace.Mvc.Controllers
         //ToDo: parametrizar o baseAddress.
         private readonly PagamentoRepositorio pagamentoRepositorio = new PagamentoRepositorio("http://localhost:22012/api");
 
-        public async Task<ActionResult> Index(Guid? guidCartao)
+        public async Task<ActionResult> Index(Guid? guidCartao, string nomeCliente)
         {
             if (!guidCartao.HasValue)
             {
@@ -20,6 +20,7 @@ namespace Marketplace.Mvc.Controllers
             }
 
             TempData["guidCartao"] = guidCartao;
+            ViewBag.NomeCliente = nomeCliente;
 
             return View(PagamentoIndexViewModel.Mapear(await pagamentoRepositorio.ObterPorCartao(guidCartao.Value)));
         }

@@ -1,9 +1,6 @@
 ﻿using Marketplace.Repositorios.Http.Requests;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Marketplace.Mvc.Models
 {
@@ -11,7 +8,7 @@ namespace Marketplace.Mvc.Models
     {
         [Required]
         [Display(Name = "Cartão")]
-        //[CreditCard()]
+        //[CreditCard] // promove a validação Luhn, obrigando a digitar um número de cartão válido.
         public string NumeroCartao { get; set; }
 
         [Required]
