@@ -2,7 +2,6 @@
 using ExpoCenter.Dominio.Entidades;
 using ExpoCenter.Mvc.Models;
 using ExpoCenter.Repositorios.SqlServer;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +20,7 @@ namespace ExpoCenter.Mvc.Controllers
         
         public ActionResult Index()
         {
-            return View(mapper.Map<List<EventoViewModel>>(dbContext.Eventos.Include(e => e.Participantes)));
+            return View(mapper.Map<List<EventoViewModel>>(dbContext.Eventos.Include(e => e.Participantes))); // Sem o Include: erro do AutoMapper, não é possível maper a property Participantes.
         }
 
         public ActionResult Participantes(int eventoId)
