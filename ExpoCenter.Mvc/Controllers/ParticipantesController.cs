@@ -12,16 +12,20 @@ namespace ExpoCenter.Mvc.Controllers
     {
         private readonly ExpoCenterDbContext dbContext;
         private readonly IMapper mapper;
+        private readonly ILogger<ParticipantesController> logger;
 
-        public ParticipantesController(ExpoCenterDbContext dbContext, IMapper mapper)
+        public ParticipantesController(ExpoCenterDbContext dbContext, IMapper mapper, ILogger<ParticipantesController> logger)
         {
             this.dbContext = dbContext;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         // GET: ParticipantesController
         public ActionResult Index()
         {
+            logger.LogInformation("Entrou no Index");
+
             return View(mapper.Map<List<ParticipanteViewModel>>(dbContext.Participantes));
         }
 
