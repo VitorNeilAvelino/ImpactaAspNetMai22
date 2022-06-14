@@ -8,18 +8,20 @@ namespace ExpoCenter.Mvc.Models
 
         [Required]
         [Display(Name = "Descrição")]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
         
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime Data { get; set; }
 
         [Required]
-        public string Local { get; set; }
+        public string? Local { get; set; }
 
         [Required]
         [Display(Name = "Preço")]
         [DataType(DataType.Currency)]
         public decimal Preco { get; set; }
+
+        public List<ParticipanteGridViewModel>? Participantes { get; set; }
     }
 }
