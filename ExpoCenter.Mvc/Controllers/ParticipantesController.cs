@@ -156,13 +156,13 @@ namespace ExpoCenter.Mvc.Controllers
             }
         }
 
-        
+        [Authorize(Policy = "ParticipantesExcluir")]
         public ActionResult Delete(int id)
         {
-            if (!User.HasClaim("Participantes", "Excluir"))
-            {
-                return new ForbidResult();
-            }
+            //if (!User.HasClaim("Participantes", "Excluir"))
+            //{
+            //    return new ForbidResult();
+            //}
 
             return View();
         }
