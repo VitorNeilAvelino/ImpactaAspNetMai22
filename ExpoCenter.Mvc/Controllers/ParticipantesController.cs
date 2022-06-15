@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using ExpoCenter.Dominio.Entidades;
+using ExpoCenter.Mvc.Helpers;
 using ExpoCenter.Mvc.Models;
 using ExpoCenter.Repositorios.SqlServer;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using static ExpoCenter.Dominio.Entidades.PerfilUsuario;
 
 namespace ExpoCenter.Mvc.Controllers
 {
+    [Authorize]
     public class ParticipantesController : Controller
     {
         private readonly ExpoCenterDbContext dbContext;
@@ -21,7 +23,7 @@ namespace ExpoCenter.Mvc.Controllers
             this.logger = logger;
         }
 
-        // GET: ParticipantesController
+        [AllowAnonymous]
         public ActionResult Index()
         {
             logger.LogInformation("Entrou no Index");
@@ -77,7 +79,9 @@ namespace ExpoCenter.Mvc.Controllers
             }
         }
 
-        // GET: ParticipantesController/Edit/5
+        //[AuthorizeAttribute(Roles = "Administrador, Gerente")]
+        //[AuthorizeRole(Administrador, Gerente, Supervisor, Agente)]
+        [AuthorizeRole(Supervisor)]
         public ActionResult Edit(int id)
         {
             //var participante = dbContext.Participantes.Include(p => p.Eventos).SingleOrDefault(p => p.Id == id);
@@ -152,9 +156,14 @@ namespace ExpoCenter.Mvc.Controllers
             }
         }
 
-        // GET: ParticipantesController/Delete/5
+        
         public ActionResult Delete(int id)
         {
+            if (!User.HasClaim("Participantes", "Excluir"))
+            {
+                return new ForbidResult();
+            }
+
             return View();
         }
 
