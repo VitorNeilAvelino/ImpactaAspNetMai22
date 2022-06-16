@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpoCenter.Repositorios.SqlServer.Migrations
 {
     [DbContext(typeof(ExpoCenterDbContext))]
-    [Migration("20220616000105_AdicaoColunaPagamentoStatus")]
+    [Migration("20220616002646_AdicaoColunaPagamentoStatus")]
     partial class AdicaoColunaPagamentoStatus
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
