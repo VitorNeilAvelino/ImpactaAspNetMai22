@@ -33,9 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Repositorios.Sql
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Mvc", "ExpoCenter.Mvc\ExpoCenter.Mvc.csproj", "{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.WebApi", "ExpoCenter.WebApi\ExpoCenter.WebApi.csproj", "{9C9F05EA-AC6D-4A51-B0B8-631640D338E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.WebApi", "ExpoCenter.WebApi\ExpoCenter.WebApi.csproj", "{9C9F05EA-AC6D-4A51-B0B8-631640D338E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Html", "ExpoCenter.Html\ExpoCenter.Html.csproj", "{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpoCenter.Html", "ExpoCenter.Html\ExpoCenter.Html.csproj", "{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoCenter.Repositorios.Http", "ExpoCenter.Repositorios.Http\ExpoCenter.Repositorios.Http.csproj", "{775F98F3-0FC9-4953-977E-9AD4C77D807D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{775F98F3-0FC9-4953-977E-9AD4C77D807D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{775F98F3-0FC9-4953-977E-9AD4C77D807D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{775F98F3-0FC9-4953-977E-9AD4C77D807D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{775F98F3-0FC9-4953-977E-9AD4C77D807D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{98C95A0B-4F4A-49A6-81EB-DEF2A2E2197A} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 		{9C9F05EA-AC6D-4A51-B0B8-631640D338E4} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 		{0792FB4F-4DBA-42B1-B27B-86597D5C9ADB} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
+		{775F98F3-0FC9-4953-977E-9AD4C77D807D} = {D665925F-A2DA-41B1-B2D4-91151BA60D8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {010584EB-4817-4A09-8B68-C4C5496D757C}
