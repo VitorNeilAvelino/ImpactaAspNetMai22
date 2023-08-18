@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Web;
 
 namespace AspNet.Capitulo02.Razor.Net.Comentarios
 {
@@ -23,7 +21,7 @@ namespace AspNet.Capitulo02.Razor.Net.Comentarios
 
             foreach (var linha in File.ReadAllLines(caminho))
             {
-                if (linha.Trim() == String.Empty)
+                if (linha.Trim() == string.Empty)
                 {
                     continue;
                 }

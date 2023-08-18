@@ -1,32 +1,12 @@
 ﻿@using AspNet.Capitulo02.Razor.Net.Comentarios
+
 @{ 
     var aplicacao = new ComentarioAplicacao();
 }
 <html>
 <head>
-    <title>Comentários</title>
-    <style>
-        label{
-            min-width: 100px;
-            display: inline-block;
-        }
-
-        label[for=comentario]{
-            vertical-align:top;
-        }
-
-        input, textarea{
-            min-width: 50%;
-            min-height: 28px;
-            margin-bottom: 5px;
-        }
-
-        input[type=submit]{
-            min-width: 300px;
-            margin-left: 105px;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>Comentários</title>    
 </head>
 
 <body>
@@ -39,19 +19,25 @@
     <h1>Comentários</h1>
     <hr />
     <form method="post">
-        <label for="nome">Nome</label>
+        <label>Nome</label>
+        <br />
         <input type="text" name="nome" />
         <br />
-        <label for="comentario">Comentário</label>
+
+        <label>Comentário</label>
+        <br />
         <textarea name="comentario" rows="10"></textarea>
         <br />
+
+        <br />
+
         <input type="submit" value="Gravar" />
     </form>
     <hr />
 
     @foreach (var comentario in aplicacao.Selecionar())
     {
-        <p>@comentario.Data - @comentario.Nome</p>
+        <p>@comentario.Data.ToString("dd/MM/yyyy HH:mm") - @comentario.Nome</p>
         <p>@comentario.Comentario</p>        
     }
 
